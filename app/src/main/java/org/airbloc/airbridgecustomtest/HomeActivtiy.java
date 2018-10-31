@@ -34,29 +34,29 @@ public class HomeActivtiy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_activtiy);
 
-        webview_bt=(Button)findViewById(R.id.home_webview_button);
+        webview_bt = (Button) findViewById(R.id.home_webview_button);
         webview_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intet=new Intent(HomeActivtiy.this,WebviewActivity.class);
+                Intent intet = new Intent(HomeActivtiy.this, WebviewActivity.class);
                 startActivity(intet);
             }
         });
 
 
-        if(getIntent()!=null){
+        if (getIntent() != null) {
             String redirectUrl;
-            if(getIntent().getStringExtra("airbridgeLink")!=null){
-                redirectUrl=getIntent().getStringExtra("airbridgeLink");
-                Log.d(Config.TAG,"received PushMessage Data : "+redirectUrl);
-                String basicUrl=redirectUrl.substring(redirectUrl.indexOf("link=")+5,redirectUrl.indexOf("&product"));
-                String productId=redirectUrl.substring(redirectUrl.indexOf("product_id")+10,redirectUrl.indexOf("&airbridge"));
+            if (getIntent().getStringExtra("airbridgeLink") != null) {
+                redirectUrl = getIntent().getStringExtra("airbridgeLink");
+                Log.d(Config.TAG, "received PushMessage Data : " + redirectUrl);
+                String basicUrl = redirectUrl.substring(redirectUrl.indexOf("link=") + 5, redirectUrl.indexOf("&product"));
+                String productId = redirectUrl.substring(redirectUrl.indexOf("product_id") + 10, redirectUrl.indexOf("&airbridge"));
                 //TODO public void InAppTouchPointEvent();
 
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse("customtest://webview?value="+basicUrl));
-                intent.putExtra("from","pushMessage");
+                intent.setData(Uri.parse("customtest://webview?value=" + basicUrl));
+                intent.putExtra("from", "pushMessage");
                 startActivity(intent);
 
             }
@@ -70,25 +70,25 @@ public class HomeActivtiy extends AppCompatActivity {
                 .addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
                     @Override
                     public void onSuccess(PendingDynamicLinkData pendingDynamicLinkData) {
-                        if(pendingDynamicLinkData!=null){
+                        if (pendingDynamicLinkData != null) {
 
-                            Uri dynamicLink=pendingDynamicLinkData.getLink();
-                            Log.d(Config.TAG,"get DynamicLinks : "+dynamicLink.toString());
+                            Uri dynamicLink = pendingDynamicLinkData.getLink();
+                            Log.d(Config.TAG, "get DynamicLinks : " + dynamicLink.toString());
 
-                            String deeplink=dynamicLink.toString();
-                            if(deeplink.contains("webPage")){
-                                deeplink=deeplink.substring(deeplink.lastIndexOf("webPage=")+8);
-                                Log.d(Config.TAG,"Parsed Deeplink : "+deeplink);
-                                deeplink="customtest://webview?value="+deeplink;
+                            String deeplink = dynamicLink.toString();
+                            if (deeplink.contains("webPage")) {
+                                deeplink = deeplink.substring(deeplink.lastIndexOf("webPage=") + 8);
+                                Log.d(Config.TAG, "Parsed Deeplink : " + deeplink);
+                                deeplink = "customtest://webview?value=" + deeplink;
                             }
                             AirBridge.getTracker().sendEvent(new FirebaseDeeplinkEvent(String.valueOf(deeplink)));
                             Intent intent = new Intent(Intent.ACTION_VIEW);
                             intent.addCategory(Intent.CATEGORY_BROWSABLE);
                             intent.setData(Uri.parse(deeplink));
-                            intent.putExtra("from","firebase");
+                            intent.putExtra("from", "firebase");
                             startActivity(intent);
-                        }else{
-                            Log.d(Config.TAG,"DynamicLinks is null");
+                        } else {
+                            Log.d(Config.TAG, "DynamicLinks is null");
                         }
 
                     }
@@ -96,7 +96,7 @@ public class HomeActivtiy extends AppCompatActivity {
                 .addOnFailureListener(this, new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.d(Config.TAG,"fail to get DynamicLinks");
+                        Log.d(Config.TAG, "fail to get DynamicLinks");
                     }
                 });
     }
