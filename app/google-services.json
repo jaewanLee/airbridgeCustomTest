@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "299035677664",
+    "firebase_url": "https://cutomtest.firebaseio.com",
+    "project_id": "cutomtest",
+    "storage_bucket": "cutomtest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:299035677664:android:d71c478a01d7285f",
+        "android_client_info": {
+          "package_name": "org.airbloc.airbridgecustomtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "299035677664-l3r00fkmvn5p11280sg8nbgg845drj0g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.airbloc.airbridgecustomtest",
+            "certificate_hash": "59234229fecfa9981bdca4abacc8e52c241aa0fb"
+          }
+        },
+        {
+          "client_id": "299035677664-46enctrra7nbscii3lg1b31vbj3m0c4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGR8nQXNAOYPDbVbFZi2uSEBJWI0bAXEw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "299035677664-46enctrra7nbscii3lg1b31vbj3m0c4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
