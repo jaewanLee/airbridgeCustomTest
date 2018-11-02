@@ -1,35 +1,26 @@
 ---
 name: Bug report
-about: Create a report to help us improve
+about: Reporting bug & describe how to handle it
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+### Bug reporting [IssueMaker]
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+이곳에 버그가 발생한 상황에 대해 적습니다.
+어떤 식으로 무엇을 했을때 어떤 오류가 나는지 상세하게 버그가 발생한 상황을 서술합니다.
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+### Analyze [IssueHandler]
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+이곳에 버그가 왜 발생했는지 이유를 적습니다.
+버그 분석은 가능하면 코드를 기반으로한 명백한 분석으로 서술해주시고, 만일 타앱을 디컴파일 한 경우 "~예상합니다"와 같은 가정으로 서술해주세요.
+SDK에 문제가 있는 경우 해당 문제가 발생한 SDK의 버전을 명시해줍니다.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+### Solution [IssueHandler]
 
-**Additional context**
-Add any other context about the problem here.
+이곳에는 해결방법을 적습니다.
+어떤방식으로 해당 버그를 처리할 예정이며, 고객사의 추가 작업이 필요한경우 이를 명백하게 명시합니다.
+작업 소요일과 수정으로 인한 이슈가 있다면 함께 적어줍니다.
+
+[x] 버그 개선을 위한 액션아이템은 이곳에 적습니다
+[x] 일반 액션아이템과 같은 형식으로 적어주시면 됩니다.

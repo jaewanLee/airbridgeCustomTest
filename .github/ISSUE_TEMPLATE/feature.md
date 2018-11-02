@@ -4,20 +4,20 @@ about: Describe the new feature & how to handle this issue
 
 ---
 
-### Background [~Issue생성자]
+### Background [IssueMaker]
 
 [ticket](https://jira?ticket_no)
 
 이곳에 해당 이슈가 생선된 배경을 적습니다. 
 이슈의 배경을 서술할때는 누가 요청했으며(고객사 or 팀내 누구) 이전에 어떤 문제가 있거나 어떤 기능이 존재하지 않아서 요청했는지에 대한 요청 이유를 적습니다.
 
-### Request [~Issue생성자]
+### Request [IssueMaker]
 
 이곳에 해당 이슈의 요구사항을 적습니다.
 요구사항에서는 정확히 추가되는 기능이 어떤 상황에서 사용되며, 기대되는 상황등을 서술합니다.
 만일 input/output 또는 API,function Name등이 사전에 정해졌다면 이를 서술해줍니다.
 
-### ActionItem [~Issue처리자]
+### ActionItem [IssueHandler]
 
 [x] 이곳에는 해당 기능을 추가하기 위한 액션아이템들을 서술합니다
 * 각 액션아이템에 대한 서술은 바로아래 리스트형태로 달아둡니다.
