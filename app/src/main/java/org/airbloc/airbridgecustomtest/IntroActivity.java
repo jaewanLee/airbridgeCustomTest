@@ -43,9 +43,8 @@ public class IntroActivity extends AppCompatActivity {
 
                 if (isFirst()) {
                     Intent intent = new Intent(IntroActivity.this, DialogActivity.class);
-                    startActivityForResult(intent,1);
-                }
-                else{
+                    startActivityForResult(intent, 1);
+                } else {
                     // 4초뒤에 다음화면(MainActivity)으로 넘어가기 Handler 사용
                     Intent intent = new Intent(getApplicationContext(), HomeActivtiy.class);
                     startActivity(intent); // 다음화면으로 넘어가기
@@ -67,10 +66,10 @@ public class IntroActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        switch (requestCode){
+        switch (requestCode) {
             case 1:
-                if(resultCode==RESULT_OK){
-                    Intent intent1=new Intent(IntroActivity.this,HomeActivtiy.class);
+                if (resultCode == RESULT_OK) {
+                    Intent intent1 = new Intent(IntroActivity.this, HomeActivtiy.class);
                     startActivity(intent1);
                     finish();
                     break;
