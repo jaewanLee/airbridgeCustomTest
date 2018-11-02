@@ -23,11 +23,15 @@ public class WebviewActivity extends AppCompatActivity {
 //        webView.loadUrl("https://airbridge.io");
 
 
-
         if (DeepLink.hadOpened(this)) {
             String deeplink = getIntent().getDataString();
-            if(getIntent().getStringExtra("from").equals("pushMessage"))
-                AirBridge.getTracker().sendEvent(new InAppTouchPointDeeplinkEvent(deeplink));
+            if (getIntent().getStringExtra("from").equals("pushMessage")) {
+                String redirectUrl = getIntent().getStringExtra("deeplinkUrl");
+                if (redirectUrl != null)
+                    AirBridge.getTracker().sendEvent(new InAppTouchPointDeeplinkEvent(deeplink));
+
+            }
+
 
             Log.d(Config.TAG, "WebVeiwActivity is opened with deeplink : " + deeplink);
 

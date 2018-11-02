@@ -49,14 +49,14 @@ public class HomeActivtiy extends AppCompatActivity {
             if (getIntent().getStringExtra("airbridgeLink") != null) {
                 redirectUrl = getIntent().getStringExtra("airbridgeLink");
                 Log.d(Config.TAG, "received PushMessage Data : " + redirectUrl);
-                String basicUrl = redirectUrl.substring(redirectUrl.indexOf("link=") + 5, redirectUrl.indexOf("&product"));
-                String productId = redirectUrl.substring(redirectUrl.indexOf("product_id") + 10, redirectUrl.indexOf("&airbridge"));
+                String basicUrl = redirectUrl.substring(redirectUrl.indexOf("webPage=") + 8, redirectUrl.indexOf("&apn"));
                 //TODO public void InAppTouchPointEvent();
 
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
                 intent.setData(Uri.parse("customtest://webview?value=" + basicUrl));
                 intent.putExtra("from", "pushMessage");
+                intent.putExtra("deeplinkUrl",redirectUrl);
                 startActivity(intent);
 
             }
@@ -81,7 +81,7 @@ public class HomeActivtiy extends AppCompatActivity {
                                 Log.d(Config.TAG, "Parsed Deeplink : " + deeplink);
                                 deeplink = "customtest://webview?value=" + deeplink;
                             }
-                            AirBridge.getTracker().sendEvent(new FirebaseDeeplinkEvent(String.valueOf(deeplink)));
+                            AirBridge.getTracker().sendEvent(new FirebaseDeeplinkEvent(String.valueOf(dynamicLink)));
                             Intent intent = new Intent(Intent.ACTION_VIEW);
                             intent.addCategory(Intent.CATEGORY_BROWSABLE);
                             intent.setData(Uri.parse(deeplink));
