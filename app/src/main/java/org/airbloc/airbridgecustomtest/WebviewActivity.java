@@ -28,7 +28,7 @@ public class WebviewActivity extends AppCompatActivity {
             if (getIntent().getStringExtra("from").equals("pushMessage")) {
                 String redirectUrl = getIntent().getStringExtra("deeplinkUrl");
                 if (redirectUrl != null)
-                    AirBridge.getTracker().sendEvent(new InAppTouchPointDeeplinkEvent(deeplink));
+                    AirBridge.getTracker().sendEvent(new InAppTouchPointDeeplinkEvent(redirectUrl));
 
             }
 

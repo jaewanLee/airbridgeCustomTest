@@ -1,11 +1,11 @@
 package org.airbloc.airbridgecustomtest;
 
-        import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessaging;
 
-        import io.airbridge.AirBridge;
-        import io.airbridge.deeplink.DeepLink;
+import io.airbridge.AirBridge;
+import io.airbridge.deeplink.DeepLink;
 
-public class Application extends android.app.Application{
+public class Application extends android.app.Application {
 
     @Override
     public void onCreate() {
@@ -18,7 +18,7 @@ public class Application extends android.app.Application{
         DeepLink.trackAirbridgeLinkOnly();
         //TODO eaby-work
         AirBridge.setIsFirebaseCallback(true);
-        AirBridge.init(this,"customerTester", "335822e4f8d542f6b56c8ca963dcc717");
+        AirBridge.init(this, "customerTester", "335822e4f8d542f6b56c8ca963dcc717");
 
         FirebaseMessaging.getInstance().subscribeToTopic("airbridge_test");
 

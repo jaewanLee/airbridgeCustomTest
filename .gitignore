@@ -8,3 +8,11 @@
 /build
 /captures
 .externalNativeBuild
+**/build
+local.properties
+.idea/
+**/*.iml
+**/*.apk
+**/.temp
+       **/*.jks
+       unused/

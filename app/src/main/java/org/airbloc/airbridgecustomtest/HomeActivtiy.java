@@ -48,6 +48,9 @@ public class HomeActivtiy extends AppCompatActivity {
             String redirectUrl;
             if (getIntent().getStringExtra("airbridgeLink") != null) {
                 redirectUrl = getIntent().getStringExtra("airbridgeLink");
+                String deeplinkUrl=redirectUrl;
+
+
                 Log.d(Config.TAG, "received PushMessage Data : " + redirectUrl);
                 String basicUrl = redirectUrl.substring(redirectUrl.indexOf("webPage=") + 8, redirectUrl.indexOf("&apn"));
                 //TODO public void InAppTouchPointEvent();
@@ -56,7 +59,7 @@ public class HomeActivtiy extends AppCompatActivity {
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
                 intent.setData(Uri.parse("customtest://webview?value=" + basicUrl));
                 intent.putExtra("from", "pushMessage");
-                intent.putExtra("deeplinkUrl",redirectUrl);
+                intent.putExtra("deeplinkUrl",deeplinkUrl);
                 startActivity(intent);
 
             }
