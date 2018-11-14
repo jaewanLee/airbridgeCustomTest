@@ -84,7 +84,9 @@ public class HomeActivtiy extends AppCompatActivity {
                                 Log.d(Config.TAG, "Parsed Deeplink : " + deeplink);
                                 deeplink = "customtest://webview?value=" + deeplink;
                             }
+                            AirBridge.getTracker().restoreEvent();
                             AirBridge.getTracker().sendEvent(new FirebaseDeeplinkEvent(String.valueOf(dynamicLink)));
+
                             Intent intent = new Intent(Intent.ACTION_VIEW);
                             intent.addCategory(Intent.CATEGORY_BROWSABLE);
                             intent.setData(Uri.parse(deeplink));
