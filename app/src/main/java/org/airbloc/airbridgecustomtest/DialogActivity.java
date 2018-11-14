@@ -67,6 +67,6 @@ public class DialogActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        AirBridge.getTracker().restoreEvent();
+
     }
 }
