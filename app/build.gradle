@@ -6,7 +6,7 @@ android {
         applicationId "org.airbloc.airbridgecustomtest"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 21
+        versionCode 22
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -32,7 +32,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //Airbridge Bintray SDK
-    implementation 'io.airbridge:sdk-android:1.4.10'
+    implementation 'io.airbridge:sdk-android:1.4.11'
     //Airbridge jar SDK
 //    implementation files('libs/sdk-android-1.4.10.jar')
     //Permission

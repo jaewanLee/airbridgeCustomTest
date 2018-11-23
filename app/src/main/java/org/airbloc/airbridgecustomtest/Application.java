@@ -23,6 +23,7 @@ public class Application extends android.app.Application {
         FirebaseMessaging.getInstance().subscribeToTopic("airbridge_test");
 
 
+
     }
 
 }

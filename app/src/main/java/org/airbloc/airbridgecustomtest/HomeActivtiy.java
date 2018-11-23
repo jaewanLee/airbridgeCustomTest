@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 import io.airbridge.AirBridge;
 import io.airbridge.deeplink.DeepLink;
+import io.airbridge.internal.tasks.AirBridgeExecutor;
 import io.airbridge.statistics.Tracker;
 import io.airbridge.statistics.events.AppShutdownEvent;
 import io.airbridge.statistics.events.DeepLinkLaunchEvent;
@@ -49,7 +50,6 @@ public class HomeActivtiy extends AppCompatActivity {
             if (getIntent().getStringExtra("airbridgeLink") != null) {
                 redirectUrl = getIntent().getStringExtra("airbridgeLink");
                 String deeplinkUrl=redirectUrl;
-
 
                 Log.d(Config.TAG, "received PushMessage Data : " + redirectUrl);
                 String basicUrl = redirectUrl.substring(redirectUrl.indexOf("webPage=") + 8, redirectUrl.indexOf("&apn"));
@@ -84,7 +84,6 @@ public class HomeActivtiy extends AppCompatActivity {
                                 Log.d(Config.TAG, "Parsed Deeplink : " + deeplink);
                                 deeplink = "customtest://webview?value=" + deeplink;
                             }
-                            AirBridge.getTracker().restoreEvent();
                             AirBridge.getTracker().sendEvent(new FirebaseDeeplinkEvent(String.valueOf(dynamicLink)));
 
                             Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -107,15 +106,20 @@ public class HomeActivtiy extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
-        AirBridge.getTracker().setManual(true);
-        AirBridge.getTracker().call(new AppShutdownEvent(), new Tracker.EventCallback() {
-            @Override
-            public void done(JSONObject results) throws Exception {
-                Process.killProcess(Process.myPid());
-            }
-        });
+//        AirBridge.getTracker().setManual(true);
+//        AirBridge.getTracker().call(new AppShutdownEvent(), new Tracker.EventCallback() {
+//            @Override
+//            public void done(JSONObject results) throws Exception {
+//                Process.killProcess(Process.myPid());
+//            }
+//        });
 
     }
 }
