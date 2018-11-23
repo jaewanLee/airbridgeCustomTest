@@ -22,8 +22,8 @@ public class IntroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intro);
         init();
 
-        AirBridge.getTracker().delayEvent();
-        AirBridge.getTracker().restoreEvent();
+
+
 
     }
 

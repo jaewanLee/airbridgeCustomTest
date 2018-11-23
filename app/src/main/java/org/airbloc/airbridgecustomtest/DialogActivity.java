@@ -27,7 +27,7 @@ public class DialogActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialog);
-
+        AirBridge.getTracker().delayEvent();
 
         permissionListener = new PermissionListener() {
             @Override
@@ -38,6 +38,7 @@ public class DialogActivity extends Activity {
                 editor.putBoolean("isFirst", false);
                 editor.apply();
                 setResult(Activity.RESULT_OK, null);
+                AirBridge.getTracker().restoreEvent();
                 finish();
             }
 
