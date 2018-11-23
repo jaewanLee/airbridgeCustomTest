@@ -39,17 +39,27 @@ public class HomeActivtiy extends AppCompatActivity {
         webview_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intet = new Intent(HomeActivtiy.this, WebviewActivity.class);
+                Intent intet = new Intent(HomeActivtiy.this, WebviewActivity.class).putExtra("isRestart", false);
                 startActivity(intet);
             }
         });
+        //singleTask 테스트를 위해, restart가 필요한 작업이라면 restart를 해줌.
+        if (getIntent() != null) {
+            if (getIntent().getBooleanExtra("needRestart", false)) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("customtest://webview?" + "airbridge=true"));
+                intent.putExtra("isRestart",true);
+                startActivity(intent);
+            }
+        }
 
 
         if (getIntent() != null) {
             String redirectUrl;
             if (getIntent().getStringExtra("airbridgeLink") != null) {
                 redirectUrl = getIntent().getStringExtra("airbridgeLink");
-                String deeplinkUrl=redirectUrl;
+                String deeplinkUrl = redirectUrl;
 
                 Log.d(Config.TAG, "received PushMessage Data : " + redirectUrl);
                 String basicUrl = redirectUrl.substring(redirectUrl.indexOf("webPage=") + 8, redirectUrl.indexOf("&apn"));
@@ -59,7 +69,7 @@ public class HomeActivtiy extends AppCompatActivity {
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
                 intent.setData(Uri.parse("customtest://webview?value=" + basicUrl));
                 intent.putExtra("from", "pushMessage");
-                intent.putExtra("deeplinkUrl",deeplinkUrl);
+                intent.putExtra("deeplinkUrl", deeplinkUrl);
                 startActivity(intent);
 
             }

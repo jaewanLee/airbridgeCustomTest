@@ -7,8 +7,8 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" />
 
 
     <application
@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".IntroActivity"
+        <activity
+            android:name=".IntroActivity"
             android:icon="@drawable/bdair">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,23 +30,36 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:host="airbridgecustomtest" android:scheme="http"/>
-                <data android:host="airbridgecustomtest" android:scheme="https"/>
-                <data android:host="main" android:scheme="customtest"/>
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="airbridgecustomtest"
+                    android:scheme="http" />
+                <data
+                    android:host="airbridgecustomtest"
+                    android:scheme="https" />
+                <data
+                    android:host="main"
+                    android:scheme="customtest" />
             </intent-filter>
 
         </activity>
 
         <activity android:name=".HomeActivtiy" />
 
-        <activity android:name=".WebviewActivity" >
+        <activity android:name=".WebviewActivity"
+            android:launchMode="singleTask">
             <intent-filter>
-                         <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:host="webview" android:scheme="customtest"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="webview"
+                    android:scheme="customtest" />
 
             </intent-filter>
 
@@ -53,25 +67,25 @@
 
         <activity android:name=".PushActivity" />
 
-        <activity android:name=".DialogActivity"
-            android:theme="@android:style/Theme.Dialog">
-        </activity>
+        <activity
+            android:name=".DialogActivity"
+            android:theme="@android:style/Theme.Dialog"></activity>
 
-        <service
-            android:name=".MyFirebaseMessagingService">
+        <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <service
-            android:name=".MyFirebaseInstanceIDService">
+        <service android:name=".MyFirebaseInstanceIDService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
-        <receiver android:name="io.airbridge.DeferredLinkReceiver" android:exported="true">
+        <receiver
+            android:name="io.airbridge.DeferredLinkReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
             </intent-filter>

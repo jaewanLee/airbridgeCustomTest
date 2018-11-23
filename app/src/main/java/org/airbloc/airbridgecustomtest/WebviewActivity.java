@@ -1,5 +1,6 @@
 package org.airbloc.airbridgecustomtest;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,13 @@ public class WebviewActivity extends AppCompatActivity {
 
         webView = (WebView) findViewById(R.id.webview_webview_webview);
 //        webView.loadUrl("https://airbridge.io");
+        //SingleTask를 항상 먼지 실행시켜서 onNEwIntent 실행여부를 테스트함
+        if(getIntent()!=null){
+            if(!getIntent().getBooleanExtra("isRestart",false)){
+                Log.d(Config.TAG,"restart");
+                startActivity(new Intent(this,HomeActivtiy.class).putExtra("needRestart",true));
+            }
+        }
 
 
         if (DeepLink.hadOpened(this)) {
@@ -43,5 +51,13 @@ public class WebviewActivity extends AppCompatActivity {
             } else
                 Log.d(Config.TAG, "Deeplink doesn't include value parameter");
         }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.d(Config.TAG,"onNewIntent is occured on WebViewActivity");
+        AirBridge.getTracker().onNewIntent(intent);
+
     }
 }
