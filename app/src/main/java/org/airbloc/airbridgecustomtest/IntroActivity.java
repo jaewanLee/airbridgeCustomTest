@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import io.airbridge.AirBridge;
+
 public class IntroActivity extends AppCompatActivity {
     Handler handler;
     Runnable r;
@@ -15,9 +17,13 @@ public class IntroActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
         init();
+
+
+
 
     }
 
@@ -70,6 +76,7 @@ public class IntroActivity extends AppCompatActivity {
             case 1:
                 if (resultCode == RESULT_OK) {
                     Intent intent1 = new Intent(IntroActivity.this, HomeActivtiy.class);
+
                     startActivity(intent1);
                     finish();
                     break;

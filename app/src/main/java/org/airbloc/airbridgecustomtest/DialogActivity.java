@@ -29,7 +29,7 @@ public class DialogActivity extends Activity {
         setContentView(R.layout.activity_dialog);
         AirBridge.getTracker().delayEvent();
 
-        permissionListener=new PermissionListener() {
+        permissionListener = new PermissionListener() {
             @Override
             public void onPermissionGranted() {
                 Toast.makeText(DialogActivity.this, "권한 허가", Toast.LENGTH_SHORT).show();
@@ -37,8 +37,8 @@ public class DialogActivity extends Activity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean("isFirst", false);
                 editor.apply();
-
-                setResult(Activity.RESULT_OK,null);
+                setResult(Activity.RESULT_OK, null);
+                AirBridge.getTracker().restoreEvent();
                 finish();
             }
 
@@ -49,7 +49,7 @@ public class DialogActivity extends Activity {
         };
 
 
-        confirm_bt=(Button)findViewById(R.id.dialog_confirm_button);
+        confirm_bt = (Button) findViewById(R.id.dialog_confirm_button);
 
         confirm_bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +58,7 @@ public class DialogActivity extends Activity {
                 TedPermission.with(DialogActivity.this)
                         .setPermissionListener(permissionListener)
                         .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
-                        .setPermissions(Manifest.permission.ACCESS_WIFI_STATE,Manifest.permission.READ_PHONE_STATE)
+                        .setPermissions(Manifest.permission.ACCESS_WIFI_STATE, Manifest.permission.READ_PHONE_STATE)
                         .check();
             }
         });
@@ -67,6 +67,6 @@ public class DialogActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        AirBridge.getTracker().restoreEvent();
+
     }
 }

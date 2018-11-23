@@ -52,6 +52,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), android.R.drawable.ic_dialog_info))
                 .setSmallIcon(R.mipmap.ic_launcher)
@@ -62,7 +64,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentIntent(pendingIntent);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
 
             NotificationChannel notificationChannel = new NotificationChannel("CustomTester", "CustomTester Notification Channel", NotificationManager.IMPORTANCE_DEFAULT);
             notificationChannel.setDescription("This Channel is engaged with CustomTester");
@@ -82,7 +84,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         }
 
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
 
     }
