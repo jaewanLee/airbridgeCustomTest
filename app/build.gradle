@@ -6,7 +6,7 @@ android {
         applicationId "org.airbloc.airbridgecustomtest"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 23
+        versionCode 25
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -32,9 +32,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //Airbridge Bintray SDK
-    implementation 'io.airbridge:sdk-android:1.4.11'
+//    implementation 'io.airbridge:sdk-android:1.4.11'
     //Airbridge jar SDK
-//    implementation files('libs/sdk-android-1.4.10.jar')
+    implementation files('libs/sdk-android-1.5.0.jar')
     //Permission
     implementation 'gun0912.ted:tedpermission:2.0.0'
     //Firebase core
@@ -43,6 +43,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-dynamic-links:16.1.2'
     //Firebase Message
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
+
+    implementation 'com.android.installreferrer:installreferrer:1.0'
 
 }
 apply plugin: 'com.google.gms.google-services'
